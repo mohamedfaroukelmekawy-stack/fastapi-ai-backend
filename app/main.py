@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from app.api.routes import auth, chat, files, embedding
-#from app.routes.video_upload import router as video_upload_router
+from app.api.routes.video_upload import router as video_upload_router
 
 app = FastAPI(
     title="FastAPI LLM API",
@@ -23,7 +23,7 @@ app.include_router(auth.router, prefix="/api")
 app.include_router(chat.router, prefix="/api")
 app.include_router(files.router, prefix="/api")
 app.include_router(embedding.router, prefix="/api")
-#app.include_router(video_upload_router)
+app.include_router(video_upload_router)
 
 
 def custom_openapi():
